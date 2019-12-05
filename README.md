@@ -1,4 +1,6 @@
-## Welcome to GitHub Pages
+# AC209a Final Project 
+
+#### Kyra Ballard, Kaela Nelson, Lauren Baker
 
 You can use the [editor on GitHub](https://github.com/kballard237/AC209a-Final-Project/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
