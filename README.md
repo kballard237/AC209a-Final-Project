@@ -133,26 +133,47 @@ Outcome variable = sleep score, i.e. quality of sleep indicator
 
 Predictors = 
 Sensor data:
+
     * total motion count
+    
     * average hourly light
+    
     * average hourly temperature
+    
     * average hourly humidity
-    * average hourly pressure    
+    
+    * average hourly pressure  
+      
 Non-sensor data:
+
     * month
+    
     * weekday
+    
     * number of problem sets due (psets)
+    
 Interaction terms:
+
     * pressure X humidity
+    
     * pressure X temperature 
+    
     * temperature X humidity
+    
     * temperature X humidity X pressure    
+    
     * motion X light
+    
     * weekday X month
+    
     * weekday X psets
+    
 Polynomial terms:
+
     * motion^2
+    
     * light^2
+    
     * psets^2
 
 ### Linear Regression
