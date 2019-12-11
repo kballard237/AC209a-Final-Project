@@ -108,6 +108,22 @@ We generated a scatter matrix to visualize any existing correlations in our data
 
 **Insert scatter matrix**
 
+### Statistical Comparisons
+
+| Predictor | p values |
+| --- | --- |
+| Avg Hourly Temp | 0.000002 |
+| Pressure X Temp | 0.000005 |
+| Temp X Humidity | 0.000105 |
+| Temp X Humidity X Pressure | 0.000136 |
+| Avg Hourly Humidity | 0.000705 |
+| Pressure X Humidity | 0.000963 |
+| Motion**2 | 0.004288 |
+| Total Motion Count | 0.017736 |
+| Number of psets due | 0.019747 |
+| Average Hourly Pressure | 0.026213 |
+
+### Variables
 
 Outcome variable = sleep score, i.e. quality of sleep indicator 
     * number of hours slept during each night was recorded from Fitbit of team member with Sensor 2 in apartment
@@ -141,7 +157,7 @@ Polynomial terms:
 
 ### Logistic Regression
 
-### Decision Tree 
+### Simple Decision Trees 
 
 #### Best Depth from Cross Validation
 
@@ -163,6 +179,13 @@ tree depth = 20
 
 tree depth = 20
 
+| Top Predictor | Counts |
+| --- | --- |
+| Average Hourly Pressure | 47 |
+| Avg Hourly Temp | 5 |
+| Pressure X Humidity | 2 |
+| weekday X psets | 1 |
+
 
 Comparison of CV tree, bagging, overfit tree
  ![Best CV Tree Visualization](./Sensor_2/data_exploration/model_acc_comp.png)
@@ -171,7 +194,18 @@ Comparison of CV tree, bagging, overfit tree
 
 tree depth = 20
 
-
+| Top Predictor | Counts |
+| --- | --- |
+| Avg Hourly Temp | 0.000002 |
+| Pressure X Temp | 0.000005 |
+| Temp X Humidity | 0.000105 |
+| Temp X Humidity X Pressure | 0.000136 |
+| Avg Hourly Humidity | 0.000705 |
+| Pressure X Humidity | 0.000963 |
+| Motion**2 | 0.004288 |
+| Total Motion Count | 0.017736 |
+| Number of psets due | 0.019747 |
+| Average Hourly Pressure | 0.026213 |
 
 ### Application of Sleep Quality Classification Model
 
