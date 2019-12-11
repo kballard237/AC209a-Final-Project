@@ -106,7 +106,9 @@ We see that there is no light when there is no motion, hinting at some kind of c
 
 We generated a scatter matrix to visualize any existing correlations in our data. We also used this plot to inform the creation of interaction and polynomial terms to augment our dataset.
 
-**Insert scatter matrix**
+![Scatter plot](./Sensor_2/data_exploration/scatter.png)
+
+![Motion, Temp, Light Visualization](./Sensor_2/data_exploration/motion_light_press_vis.png)
 
 ### Statistical Comparisons
 
@@ -233,7 +235,7 @@ Following this streak of good fortune, Sensor 1 had a 72 hour empty collection (
 
 **Insert plot**
 
-Similarly, during this and subsequent collections, temperature and humidity had all values recorded as 0, while pressure recorded reasonable values. This is interesting as apartment temparture was indeed above freezing during these collections days and also interesting that these three outcome variables are recorded on the same sensor head. 
+Similarly, during this and subsequent collections, temperature and humidity had all values recorded as 0, while pressure recorded reasonable values. This is interesting as apartment temperature was indeed above freezing during these collections days and also interesting that these three outcome variables are recorded on the same sensor head. 
 
 **Insert plot**
 
