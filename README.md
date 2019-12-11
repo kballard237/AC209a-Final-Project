@@ -106,9 +106,9 @@ We see that there is no light when there is no motion, hinting at some kind of c
 
 We generated a scatter matrix to visualize any existing correlations in our data. We also used this plot to inform the creation of interaction and polynomial terms to augment our dataset.
 
-![Scatter plot](./Sensor_2/data_exploration/scatter.png)
+![Scatter plot](./Sensor_2/data_vis/scatter.png)
 
-![Motion, Temp, Light Visualization](./Sensor_2/data_exploration/motion_light_press_vis.png)
+![Motion, Temp, Light Visualization](./Sensor_2/data_vis/motion_light_press_vis.png)
 
 ### Statistical Comparisons
 
