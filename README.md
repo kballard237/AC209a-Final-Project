@@ -107,14 +107,14 @@ We see that there is no light when there is no motion, hinting at some kind of c
 
 For further analysis, we also calculated the average values for the following predictors based on weekday. 
 
-![Avg hourly plot](Sensor_2/data_exploration/avg_daily_counts.png)
+![Avg hourly plot](./Sensor_2/data_exploration/avg_daily_counts.png)
 
 
 ## Predicting Quality of Sleep
 
 We generated a scatter matrix to visualize any existing correlations in our data. We also used this plot to inform the creation of interaction and polynomial terms to augment our dataset.
 
-![Scatter plot](Sensor_2/data_exploration/scatter.png)
+![Scatter plot](./Sensor_2/data_exploration/scatter.png)
 
 
 ### Statistical Comparisons
