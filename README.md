@@ -145,21 +145,33 @@ Polynomial terms:
 
 #### Best Depth from Cross Validation
 
-Using 5-fold cross validation with a max depth of 20, the best depth of the decision tree was found to be XX.
+Using 5-fold
+cross validation with a max depth of 20, the best depth of the decision tree was found to be XX.
 
-**Insert tree image**
+CV tree
+ \includegraphics[]{../../../../../../Desktop/best_cv_tree.png}
+ 
+ CV accuracy
+ \includegraphics[]{../../../../../../Desktop/cv_acc.png}
 
 #### Overfit Decision Tree
 
 tree depth = 20
+\includegraphics[]{../../../../../../Desktop/overfit_tree.png}
 
 ### Bagging
 
 tree depth = 20
 
+
+Comparison of CV tree, bagging, overfit tree
+\includegraphics[]{../../../../../../Desktop/model_acc_comp.png}
+
 ### Random Forest
 
 tree depth = 20
+
+
 
 ### Application of Sleep Quality Classification Model
 
