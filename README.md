@@ -118,7 +118,7 @@ We generated a scatter matrix to visualize any existing correlations in our data
 | Temp X Humidity X Pressure | 0.000136 |
 | Avg Hourly Humidity | 0.000705 |
 | Pressure X Humidity | 0.000963 |
-| Motion**2 | 0.004288 |
+| Motion^2 | 0.004288 |
 | Total Motion Count | 0.017736 |
 | Number of psets due | 0.019747 |
 | Average Hourly Pressure | 0.026213 |
@@ -196,16 +196,28 @@ tree depth = 20
 
 | Top Predictor | Counts |
 | --- | --- |
-| Avg Hourly Temp | 0.000002 |
-| Pressure X Temp | 0.000005 |
-| Temp X Humidity | 0.000105 |
-| Temp X Humidity X Pressure | 0.000136 |
-| Avg Hourly Humidity | 0.000705 |
-| Pressure X Humidity | 0.000963 |
-| Motion**2 | 0.004288 |
-| Total Motion Count | 0.017736 |
-| Number of psets due | 0.019747 |
-| Average Hourly Pressure | 0.026213 |
+| Average Hourly Pressure | 11 |
+| Avg Hourly Temp | 8 |
+| Pressure X Temp | 8 |
+| Temp X Humidity X Pressure | 6 |
+| weekday X psets | 5 |
+| Avg Hourly Humidity | 4 |
+| Week day | 3 |
+| Pressure X Humidity | 3 |
+| Temp X Humidity | 3 |
+| Motion | 1 |
+| Total Motion Count | 1 |
+| Avg Hourly Light | 1 |
+| (Number of psets due)^2  | 1 |
+
+### Results Comparison across Models
+
+| Classifier | Training Accuracy | Testing Accuracy |
+| --- | --- | --- |
+| single tree with best depth chosen by CV | 1.0 | 0.967532 |
+| single depth-X tree | 1.0 | 0.974026 |
+| bagging 55 depth-X trees | 0.998217 | 0.983235 |
+| Random Forest of 55 depth-X trees | 1.0 | 0.993506 |
 
 ### Application of Sleep Quality Classification Model
 
