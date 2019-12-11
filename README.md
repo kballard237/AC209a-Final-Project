@@ -149,15 +149,15 @@ Using 5-fold
 cross validation with a max depth of 20, the best depth of the decision tree was found to be XX.
 
 CV tree
- \includegraphics[]{../../../../../../Desktop/best_cv_tree.png}
+![Best CV Tree Visualization](./Sensor_2/data_exploration/best_cv_tree.png)
  
  CV accuracy
- \includegraphics[]{../../../../../../Desktop/cv_acc.png}
+ ![Best CV Tree Visualization](./Sensor_2/data_exploration/cv_acc.png)
 
 #### Overfit Decision Tree
 
 tree depth = 20
-\includegraphics[]{../../../../../../Desktop/overfit_tree.png}
+ ![Best CV Tree Visualization](./Sensor_2/data_exploration/overfit_tree.png)
 
 ### Bagging
 
@@ -165,7 +165,7 @@ tree depth = 20
 
 
 Comparison of CV tree, bagging, overfit tree
-\includegraphics[]{../../../../../../Desktop/model_acc_comp.png}
+ ![Best CV Tree Visualization](./Sensor_2/data_exploration/model_acc_comp.png)
 
 ### Random Forest
 
