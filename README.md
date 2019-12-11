@@ -106,6 +106,8 @@ We see that there is no light when there is no motion, hinting at some kind of c
 
 We generated a scatter matrix to visualize any existing correlations in our data. We also used this plot to inform the creation of interaction and polynomial terms to augment our dataset.
 
+![Avg hourly plot](./Sensor_2/data_exploration/avg_daily_counts.png)
+
 ![Scatter plot](./Sensor_2/data_exploration/scatter.png)
 
 ![Motion, Temp, Light Visualization](./Sensor_2/data_exploration/motion_light_press_vis.png)
@@ -133,47 +135,29 @@ Outcome variable = sleep score, i.e. quality of sleep indicator
 
 Predictors = 
 Sensor data:
-
     * total motion count
-    
     * average hourly light
-    
     * average hourly temperature
-    
     * average hourly humidity
-    
     * average hourly pressure  
       
 Non-sensor data:
-
-    * month
-    
+    * month    
     * weekday
-    
     * number of problem sets due (psets)
     
 Interaction terms:
-
-    * pressure X humidity
-    
-    * pressure X temperature 
-    
-    * temperature X humidity
-    
-    * temperature X humidity X pressure    
-    
-    * motion X light
-    
-    * weekday X month
-    
+    * pressure X humidity    
+    * pressure X temperature     
+    * temperature X humidity    
+    * temperature X humidity X pressure        
+    * motion X light    
+    * weekday X month    
     * weekday X psets
     
 Polynomial terms:
-
-    * motion^2
-    
-    * light^2
-    
+    * motion^2    
+    * light^2   
     * psets^2
 
 ### Linear Regression
