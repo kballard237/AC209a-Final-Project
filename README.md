@@ -173,13 +173,15 @@ According to the pvalues, we see the predictors listed above all are statistical
 
 ### Linear Regression
 
-We first perform a baseline linear regression model. For this model, we scaled the data.
-
-This model had a training accuracy of 0.2613 and testing accuracy of 0.2450.
+We first perform a baseline linear regression model. For this model, we scaled the data. After fitting the model on training data, we found that this model had a training accuracy of 0.2613 and testing accuracy of 0.2450. This accuracy is very low, which we reason is because our outcome variable is binary and classification models are better suited for this.
 
 ### Logistic Regression
 
-Based on the results of the linear regression model, we then perform a baseline logistic regression model to determine if there is signal between our predictor variables and outcome variable.  We scaled the data for this model. This model had a training accuracy of 0.6356 and a testing accuracy of 0.6364.
+Based on the poor results of the linear regression model, we then perform a baseline logistic regression model to determine if there is signal between our predictor variables and outcome variable.  We scaled the data for this model. This model had a training accuracy of 0.6356 and a testing accuracy of 0.6364. 
+
+**insert plot here**
+
+While these accuracies are higher, we still would like better predictions. In addition, we wanted to have more interpretability of the results, and so we decided to model the data with decision trees.
 
 ### Simple Decision Trees 
 
@@ -198,7 +200,7 @@ This model has a training accuracy of 1.0 and testing accuracy of 0.8896.
 
 Using 5-fold cross validation, we created a total of 20 trees with varying depths up to 20. We then found the train and test accuracies for all of these models, and found the mean, upper bound, and lower bounds of the resulting cross validation scores. The results for each tree depth are shown in the figure below. 
 
- [Best CV acc](./Sensor_2/data_exploration/cv_acc.png)
+![Best CV acc](./Sensor_2/data_exploration/cv_acc.png)
 
 Notice that training and testing accuracy and cross validation mean all increase as the number of tree depths increases. 
 
@@ -272,7 +274,7 @@ As an overall summary, we include the train and accuracy scores in the table bel
 * your apartment can track your sleep, rather than requiring that individuals don an activity tracker such as a Fitbit. 
 * information could be eventually valuable real estate 
 
-## In Details on Sensor 1 Issues
+## Details on Sensor 1 Issues for Future Applications and/or Projects
 
 Sensor 1 experienced numerous issues with early collections (i.e. necessity of hard reset or else no data written to SD card) led to several empty collections but these were able to be resolved with help from Evan in the Active Learning Labs. Sensor 1 was able to collect 2 full weeks of consecutive data to prepare for models presented in Milestone 3, corresponding to the first section of this report. 
 
