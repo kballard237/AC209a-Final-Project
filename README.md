@@ -106,11 +106,11 @@ We see that there is no light when there is no motion, hinting at some kind of c
 
 We generated a scatter matrix to visualize any existing correlations in our data. We also used this plot to inform the creation of interaction and polynomial terms to augment our dataset.
 
-![Avg hourly plot](./Sensor_2/data_exploration/avg_daily_counts.png)
+![Avg hourly plot](Sensor_2/data_exploration/avg_daily_counts.png)
 
-![Scatter plot](./Sensor_2/data_exploration/scatter.png)
+![Scatter plot](Sensor_2/data_exploration/scatter.png)
 
-![Motion, Temp, Light Visualization](./Sensor_2/data_exploration/motion_light_press_vis.png)
+![Motion, Temp, Light Visualization](Sensor_2/data_exploration/motion_light_press_vis.png)
 
 ### Statistical Comparisons
 
@@ -172,9 +172,11 @@ Using 5-fold
 cross validation with a max depth of 20, the best depth of the decision tree was found to be XX.
 
 CV tree
+
 ![Best CV Tree Visualization](./Sensor_2/data_exploration/best_cv_tree.png)
  
  CV accuracy
+ 
  ![Best CV Tree Visualization](./Sensor_2/data_exploration/cv_acc.png)
 
 #### Overfit Decision Tree
