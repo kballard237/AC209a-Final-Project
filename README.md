@@ -364,9 +364,7 @@ The ability to classify whether an individual slept for greater than the recomme
 ## Details on Sensor 1 Issues for Future Student Use
 
 <p align="justify">
-Given Sensor 1 troubles, we wanted to provide some visualizations of these issues in consideration of future projects and troibleshooting processes. 
-    
-Sensor 1 experienced numerous issues with early collections (i.e. necessity of hard reset or else no data written to SD card) that led to several empty collections. These were eventually able to resolved at the end of October with help from Evan in the Active Learning Labs. Sensor 1 was able to collect 2 full weeks of consecutive data to prepare for models presented in Milestone 3, corresponding to the first section of this report. 
+Given Sensor 1 troubles, we wanted to provide some visualizations of these issues in consideration of future projects and troubleshooting processes. Sensor 1 experienced numerous issues with early collections (i.e. necessity of hard reset or else no data written to SD card) that led to several empty collections. These were eventually able to be resolved at the end of October with help from Evan in the Active Learning Labs. Sensor 1 was able to collect 2 full weeks of consecutive data to prepare for models presented in Milestone 3, corresponding to the first section of this report. 
 </p>
 
 <p align="justify">
