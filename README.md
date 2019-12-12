@@ -10,7 +10,7 @@ We completed project A: measuring our environment. For this project, we collecte
 ## Datasets 
 
 <div class=text-justify>
-We collected our data using sensors that capture their surrounding features: light (cadmium sulfide photoresistor AFEC), motion (passive infrared detector with 150 cm over 100◦ range; records binary 0 or 1 pulses with 2sec resolution), temperature (-20 to 60 degrees C), humidity (20 to 95% RH with resolution 0.1%), and pressure (300 - 1100 hPa ±1 hPa). We placed Sensor 1 in the foyer of one student’s apartment, and Sensor 2 in the bedroom of another student’s apartment (both students in this group). The differences in these locations are as follows: Sensor 1 is placed in an apartment with multiple residency and building-regulated heat, and Sensor 2 is placed in an apartment with single residency and tenant-regulated heat.
+We collected our data using sensors that capture their surrounding features: light (cadmium sulfide photoresistor AFEC), motion (passive infrared detector with 150 cm over 100 degree range; records binary 0 or 1 pulses with 2sec resolution), temperature (-20 to 60 degrees C), humidity (20 to 95% RH with resolution 0.1%), and pressure (300 - 1100 hPa +/-1 hPa). We placed Sensor 1 in the foyer of one student's apartment, and Sensor 2 in the bedroom of another student's apartment (both students in this group). The differences in these locations are as follows: Sensor 1 is placed in an apartment with multiple residency and building-regulated heat, and Sensor 2 is placed in an apartment with single residency and tenant-regulated heat.
 
 For each sample and corresponding sensor, we specified both the sample and duration rates, as recorded below. Our intuition behind this is that light and motion tend to fluctuate more frequently, so we set their sample rate to collect within smaller windows of time. However, temperature, humidity, and pressure fluctuate less frequently over a small time interval, so we set their sample rate to be higher (note that these environmental variables were recorded via one sensing "head" of the sensor and thus required the same sampling frequency). The duration of our data collections lasted between 24-99 hours (99 hour limit). Details on collection rates are included below.
 </div>
@@ -48,7 +48,7 @@ Note: Sensor 2 utilized the maximum duration of recording (99 hours), while Sens
 
 ## Preliminary Data Analysis (Milestone 3) 
 
-Each sensor stores the data as separate files for each feature in an SD card that we then uploaded and saved on our computers. These files were saved as text files, so we wrote functions that read in these text files and created a data frame of each feature. In addition, when we collected the data, we recorded each sample a��s start date and time. Based on this, we developed a method to create a pandas date time object of the collection start date, and then interpolated more dates to match our collection sample frequency for each feature. Lastly, to handle missing values for this milestone, we omitted any samples that failed to record. Thus, our data set only includes data for times that the sensor actually recorded. We decided not to use interpolation for missing data as the patterns of data are very variable and the duration of missing data is very long (not confident in the accuracy of the interpolated data). 
+Each sensor stores the data as separate files for each feature in an SD card that we then uploaded and saved on our computers. These files were saved as text files, so we wrote functions that read in these text files and created a data frame of each feature. In addition, when we collected the data, we recorded each sample's start date and time. Based on this, we developed a method to create a pandas date time object of the collection start date, and then interpolated more dates to match our collection sample frequency for each feature. Lastly, to handle missing values for this milestone, we omitted any samples that failed to record. Thus, our data set only includes data for times that the sensor actually recorded. We decided not to use interpolation for missing data as the patterns of data are very variable and the duration of missing data is very long (not confident in the accuracy of the interpolated data). 
 
 Initial data visualizations for Milestone 3 indicated that Sensor 1 had the most interesting trend in light, where we could see a pattern of when natural light fills the apartment.
 
@@ -60,7 +60,7 @@ After analyzing these two plots, we decided that it would be interesting to look
 
 **Insert average light**
 
-As you can see above, we can infer that sunrise occurs around 5 am and sunset occurs around 5pm. It is even more interesting to see that after sunset, we could potentially classify artificial versus natural light, because if light is less than 4095 after sunset, then it would have to be artificial light. This motivated us to adjust our research question to be based on predicting artificial or natural light. Thus, our newly revised project question is: **“Based on indoor environmental features, is the light that the sensor catches artificial or natural?”** In addition, we are interested in features are most indicative of the light is artificial or natural. 
+As you can see above, we can infer that sunrise occurs around 5 am and sunset occurs around 5pm. It is even more interesting to see that after sunset, we could potentially classify artificial versus natural light, because if light is less than 4095 after sunset, then it would have to be artificial light. This motivated us to adjust our research question to be based on predicting artificial or natural light. Thus, our newly revised project question is: **"Based on indoor environmental features, is the light that the sensor catches artificial or natural?"** In addition, we are interested in features are most indicative of the light is artificial or natural. 
 
 ### Decision Tree 
 
@@ -126,36 +126,36 @@ Notice that from this scatter matrix, we can see that there is a more distinct c
 ### Variables
 
 Outcome variable = sleep score, i.e. quality of sleep indicator 
-    * number of hours slept during each night was recorded from Fitbit of team member with Sensor 2 in apartment
-    * data was assigned 1 if greater than 7 hours ("good sleep") or 0 if less than 7 hours ("less than recommended amount of sleep")
+* number of hours slept during each night was recorded from Fitbit of team member with Sensor 2 in apartment
+* data was assigned 1 if greater than 7 hours ("good sleep") or 0 if less than 7 hours ("less than recommended amount of sleep")
 
 Our Predictor variables consist of the following data:
 
 Sensor data:
-    * total motion count
-    * average hourly light
-    * average hourly temperature
-    * average hourly humidity
-    * average hourly pressure  
+* total motion count
+* average hourly light
+* average hourly temperature
+* average hourly humidity
+* average hourly pressure  
       
 Non-sensor data:
-    * month    
-    * weekday
-    * number of problem sets due (psets)
+* month    
+* weekday
+* number of problem sets due (psets)
     
 Interaction terms:
-    * pressure X humidity    
-    * pressure X temperature     
-    * temperature X humidity    
-    * temperature X humidity X pressure        
-    * motion X light    
-    * weekday X month    
-    * weekday X psets
+* pressure X humidity    
+* pressure X temperature     
+* temperature X humidity    
+* temperature X humidity X pressure        
+* motion X light    
+* weekday X month    
+* weekday X psets
     
 Polynomial terms:
-    * motion^2    
-    * light^2   
-    * psets^2
+* motion^2    
+* light^2   
+* psets^2
    
 We added the interaction terms because from our we noticed that the results of our baseline models (described in depth in the sections below) suggest that the environmental data, temperature, humidity, and pressure, appear to have more correlated trends associated with hours slept. We also included interaction terms such as weekday X month and weekday X psets, because naturally these two also seem correlated (pset due dates are scheduled for the same day of the week). Lastly, we added polynomial terms we wanted to add a stronger presence of motion, light, and number of psets, given that there are more environmental variables in our data set.
     
