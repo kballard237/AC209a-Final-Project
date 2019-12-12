@@ -86,7 +86,7 @@ These high accuracy scores would be expected in this case because we have a limi
 
 ### Application of Light Classification Model
 
-Predicting whether light is artifical, natural or off could be useful for the development of a lamp/house lighting that emits a natural pattern of light throughout the day to mirror natural light in a given space and match a user's light needs in that space. Additionally, quanitifying and classifying light may be of interest in the real estaste business, as having rooms with certain durations and intensities of light may be of interest to potential buyers.
+Predicting whether light is artificial, natural or off could be useful for the development of a lamp/house lighting that emits a natural pattern of light throughout the day to mirror natural light in a given space and match a user's light needs in that space. Additionally, quantifying and classifying light may be of interest in the real estate business, as having rooms with certain durations and intensities of light may be of interest to potential buyers.
 
 ### Sensor 1 Issues
 
@@ -117,7 +117,7 @@ We generated a scatter matrix to visualize any existing correlations in our data
 
 ![Scatter plot](./Sensor_2/data_exploration/scatter.png) 
 
-Notice that within this scatter matrix, there is a more distinct correlation between temperature and humidity. We keep this in mind later when including interaction terms in our data set for our models.
+Notice that from this scatter matrix, we can see that there is a more distinct correlation between temperature and humidity. 
 
 ### Variables
 
@@ -125,9 +125,9 @@ Outcome variable = sleep score, i.e. quality of sleep indicator
     * number of hours slept during each night was recorded from Fitbit of team member with Sensor 2 in apartment
     * data was assigned 1 if greater than 7 hours ("good sleep") or 0 if less than 7 hours ("less than recommended amount of sleep")
 
-Predictors = 
-Sensor data:
+Our Predictor variables consist of the following data:
 
+Sensor data:
     * total motion count
     * average hourly light
     * average hourly temperature
@@ -135,13 +135,11 @@ Sensor data:
     * average hourly pressure  
       
 Non-sensor data:
-
     * month    
     * weekday
     * number of problem sets due (psets)
     
 Interaction terms:
-
     * pressure X humidity    
     * pressure X temperature     
     * temperature X humidity    
@@ -151,14 +149,15 @@ Interaction terms:
     * weekday X psets
     
 Polynomial terms:
-
     * motion^2    
     * light^2   
     * psets^2
+   
+We added the interaction terms because from our we noticed that the results of our baseline models (described in depth in the sections below) suggest that the environmental data, temperature, humidity, and pressure, appear to have more correlated trends associated with hours slept. We also included interaction terms such as weekday X month and weekday X psets, because naturally these two also seem correlated (pset due dates are scheduled for the same day of the week). Lastly, we added polynomial terms we wanted to add a stronger presence of motion, light, and number of psets, given that there are more environmental variables in our data set.
     
 ### Statistical Comparisons
 
-To understand if there is a significant difference among the predictor variables, we calculated a ttest for each variable, comparing the two groups, less than 6 hours of sleep and 6 or greater hours of sleep. We see the results below. 
+To understand if there is a significant difference among the predictor variables, we calculated a t-test for each variable, comparing the two groups, less than 6 hours of sleep and 6 or greater hours of sleep. We see the results below. 
 
 | Predictor | p values |
 | --- | --- |
@@ -177,28 +176,22 @@ According to the pvalues, we see the predictors listed above all are statistical
 
 ### Linear Regression
 
-We first perform a baseline linear regression model. For this model, we scaled the data. After fitting the model on training data, we found that this model had a training accuracy of 0.2613 and testing accuracy of 0.2450. This accuracy is very low, which we reason is because our outcome variable is binary and classification models are better suited for this.
+We first perform a baseline linear regression model on a standardized data set. After fitting the model on training data, we found that this model had a training accuracy of 0.2613 and testing accuracy of 0.2450. This accuracy is very low, which we reason is because our outcome variable is binary and classification models are better suited for this. Thus, we moved on to a logistic model.
 
 ### Logistic Regression
 
-Based on the poor results of the linear regression model, we then perform a baseline logistic regression model to determine if there is signal between our predictor variables and outcome variable.  We scaled the data for this model. This model had a training accuracy of 0.6356 and a testing accuracy of 0.6364. 
-
-**insert plot here**
-
-While these accuracies are higher, we still would like better predictions. In addition, we wanted to have more interpretability of the results, and so we decided to model the data with decision trees.
+Based on the poor results of the linear regression model, we implemented a baseline logistic regression model to determine if there is signal between our predictor variables and outcome variable (again on standardized data). This model had a training accuracy of 0.6356 and a testing accuracy of 0.6364. While these accuracies are higher, we still would like better prediction accuracy and believe that we could achieve that with tree based models. In addition, we wanted to have more interpretability of the results, and so we decided to model the data with decision trees.
 
 ### Simple Decision Trees 
 
-We decided to different variations of simple decision trees on our data set. Because the rest of the models we create are tree based methods, we do not scale or normalize the predictors for the rest of the models. We perform three methods using simple decision trees: an overfit tree with a tree depth of 20 (our chosen max depth), 5 fold cross validation over tree depths up to 20, and bagging. 
+We decided to different variations of simple decision trees on our data set. Because the rest of the models we create are tree based methods, we do not scale or normalize the predictors for the rest of the models. We perform three different methods using simple decision trees: an overfit tree with a tree depth of 20 (our chosen max depth), 5 fold cross validation over tree depths up to 20, and bagging. 
 
 #### Overfit Decision Tree
 
-We first created a simple decision tree that is considered to be overfit by creating a tree with depth 20. 
+We first created a simple decision tree that is considered to be overfit because we choose a tree depth of 20. This model has a training accuracy of 1.0 and testing accuracy of 0.8766. We expected the train accuracy to be relatively high and the test accuracy to be lower because it overfit the data. Below, we see that the top predictor the model selected to first classify the data on is average hourly pressure. This is interesting because we initially would expect to see light or motion count to be more indicative of the time the person went to bed, and therefore indicate the number of hours of sleep. However, the interaction term, weekday x p sets, is still within the top 3 predictors - so our initial assumptions are not completely off. We next try cross validation to analyze if we get similar results.
 
-tree depth = 20
  ![Best CV Tree Visualization](./Sensor_2/data_exploration/overfit_tree.png)
  
-This model has a training accuracy of 1.0 and testing accuracy of 0.8766.
 
 #### Best Depth from Cross Validation
 
@@ -208,17 +201,15 @@ Using 5-fold cross validation, we created a total of 20 trees with varying depth
 
 Notice that training and testing accuracy and cross validation mean all increase as the number of tree depths increases. 
 
-We then sorted according to the cross validation scores and found that the tree depth corresponding to the highest CV mean is 17. We then fit a decision tree with depth 17 and found that average hourly pressure was the top predictor chosen to split on, following with the variables, pressure x humidity and weekday x number of psets. We see this in the tree graph below.
+We sorted according to the cross validation scores and found that the tree depth corresponding to the highest CV mean is 17. We then fit a decision tree with depth 17 and found that average hourly pressure was the top predictor chosen to split on, following with the variables, pressure x humidity and weekday x number of psets. We see this in the tree graph below.
 
 ![Best CV Tree Visualization](./Sensor_2/data_exploration/best_cv_tree.png)
- 
-*analyze more here*
 
-We found that the corresponding train accuracy is 1.0 and test accuracy is 0.8896.
+Notice that the best model chosen from cross validation chose the same top three predictors as the overfit decision tree. The corresponding train accuracy is 1.0 and test accuracy is 0.8896. This is not a huge improvement from the overfit decision tree, so we decided to implement bagging on simple decision trees. 
 
 ### Bagging
 
-Because of possible overfitting (?), we perform bagging over 55 decision trees with max depth (20). We found that the top predictors chosen among the trees in this model is given in the table below.
+We perform bagging over 55 decision trees with max depth (20). We found that the top predictors chosen among the trees in this model is given in the table below.
 
 | Top Predictor | Counts |
 | --- | --- |
@@ -227,17 +218,15 @@ Because of possible overfitting (?), we perform bagging over 55 decision trees w
 | Pressure X Humidity | 2 |
 | weekday X psets | 1 |
 
-The train accuracy is 1.0 and the test accuracy is 0.9870.
-
-We computed the running accuracies for the bagging train and test, and can see the comparison between the CV tree, bagging, and overfit tree in the table below.
+The train accuracy is 1.0 and the test accuracy is 0.9870. Bagging gives better accuracy, but we still were curious about why the decision tree models consistently gave that the top predictor is average hourly pressure. For a direct comparison, we computed the running accuracies for the bagging train and test, and can see the comparison between the CV tree, bagging, and overfit tree in the graph below.
  
  ![Best CV Tree Visualization](./Sensor_2/data_exploration/model_acc_comp.png)
  
- *Add analysis here*
+We next implement a random forest classifier because we wanted to see if average hourly pressure was consistently chosen as a top predictor. Random forest classifiers picks random predictors to build trees from, and so we felt like this would be a good metric to see if average hourly pressure was in fact the top predictor in classifying the number of hours of sleep that the person in sensor 2's apartment got.
 
 ### Random Forest
 
-We then fit a random forest classifier with tree depth 20 (chosen max depth) because _____ . We found that the top predictors chosen for each tree are shown in the table below.
+We fit a random forest classifier with tree depth 20 (chosen max depth) in order to be consistent with the bagging decision tree models. We found that the top predictors chosen for each tree are shown in the table below.
 
 | Top Predictor | Counts |
 | --- | --- |
@@ -255,7 +244,7 @@ We then fit a random forest classifier with tree depth 20 (chosen max depth) bec
 | Avg Hourly Light | 1 |
 | (Number of psets due)^2  | 1 |
 
-Notice that within the random forest model, average hourly pressure is the top predictor, which is the same top predictor variable as that chosen in our decision tree. **include more results/analysis**
+Notice that within the random forest model, average hourly pressure is still the top predictor. 
 
 ### Results Comparison across Models
 
@@ -268,12 +257,13 @@ As an overall summary, we include the train and accuracy scores in the table bel
 | bagging 55 depth-X trees | 0.998217 | 0.983235 |
 | Random Forest of 55 depth-X trees | 1.0 | 0.993506 |
 
-**Add analysis here**
-
 ## Conclusion
 
 ### Analysis of models results
 
+After implementing our baseline models and tree based models, we found that random forest was able to classify our data the best, with a train accuracy of 1.0 and test accuracy of 0.993506. This is rather surprising, as the test accuracy is incredibly high. We believe that this might be due to the fact that we had fewer predictor variables that are not engineered (i.e. could have included more environmental data such as indicator if the person was home or not). It was expected, however, that random forest classified sleep better than the decision tree classifiers, since the random forest classifier train can capture more variance of the data set. 
+
+The outcome that we thought was interesting from our modeling is that average hourly pressure, average hourly temperature, and average hourly humidity have more of an effect on the number of hours of sleep than other factors such as number of psets due, or motion count and light. We believe that average hourly pressure might be more important in these tree based method because maybe this person is a sensitive sleeper and has a hard time falling asleep given the atmospheric pressure and temperature of her environment. 
 
 ### Application of Sleep Quality Classification Model
 
