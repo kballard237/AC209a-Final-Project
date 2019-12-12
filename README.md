@@ -2,9 +2,9 @@
 
 ##### Kyra Ballard, Kaela Nelson, Lauren Baker
 
-<div class=text-justify>
+<p align="justify">
 We completed project A: measuring our environment. For this project, we collected data from two sensors placed inside residences. 
-</div>
+</p>
 
 
 ## Datasets 
