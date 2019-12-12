@@ -194,7 +194,7 @@ We first created a simple decision tree that is considered to be overfit by crea
 tree depth = 20
  ![Best CV Tree Visualization](./Sensor_2/data_exploration/overfit_tree.png)
  
-This model has a training accuracy of 1.0 and testing accuracy of 0.8896.
+This model has a training accuracy of 1.0 and testing accuracy of 0.8766.
 
 #### Best Depth from Cross Validation
 
@@ -204,13 +204,13 @@ Using 5-fold cross validation, we created a total of 20 trees with varying depth
 
 Notice that training and testing accuracy and cross validation mean all increase as the number of tree depths increases. 
 
-We then sorted according to the cross validation scores and found that the tree depth corresponding to the highest CV mean is 19. We then fit a decision tree with depth 19 and found that average hourly pressure was the top predictor chosen to split on, following with the variables, pressure x humidity and weekday x number of psets. We see this in the tree graph below.
+We then sorted according to the cross validation scores and found that the tree depth corresponding to the highest CV mean is 17. We then fit a decision tree with depth 17 and found that average hourly pressure was the top predictor chosen to split on, following with the variables, pressure x humidity and weekday x number of psets. We see this in the tree graph below.
 
 ![Best CV Tree Visualization](./Sensor_2/data_exploration/best_cv_tree.png)
  
 *analyze more here*
 
-We found that the corresponding train accuracy is 1.0 and test accuracy is 0.9675.
+We found that the corresponding train accuracy is 1.0 and test accuracy is 0.8896.
 
 ### Bagging
 
@@ -223,7 +223,9 @@ Because of possible overfitting (?), we perform bagging over 55 decision trees w
 | Pressure X Humidity | 2 |
 | weekday X psets | 1 |
 
-We can see the comparison between the CV tree, bagging, and overfit tree in the table below.
+The train accuracy is 1.0 and the test accuracy is 0.9870.
+
+We computed the running accuracies for the bagging train and test, and can see the comparison between the CV tree, bagging, and overfit tree in the table below.
  
  ![Best CV Tree Visualization](./Sensor_2/data_exploration/model_acc_comp.png)
  
