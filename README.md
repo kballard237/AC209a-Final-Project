@@ -1,4 +1,4 @@
-# Project A: Measuring Our Environment
+## Project A: Measuring Our Environment
 
 ##### Group 65: Kyra Ballard, Kaela Nelson, Lauren Baker
 
