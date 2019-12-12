@@ -44,11 +44,11 @@ Note: Sensor 2 utilized the maximum duration of recording (99 hours), while Sens
 
 ## Preliminary Data Analysis (Milestone 3) 
 
-Each sensor stores the data as separate files for each feature in an SD card that we then uploaded and saved on our computers. These files were saved as text files, so we wrote functions that read in these text files and created a dataframe of each feature. In addition, when we collected the data, we recorded each sampleâ€™s start date and time. Based on this, we developed a method to create a pandas date time object of the collection start date, and then interpolated more dates to match our collection sample frequency for each feature. Lastly, to handle missing values for this milestone, we omitted any samples that failed to record. Thus, our data set only includes data for times that the sensor actually recorded. We decided not to use interpolation for missing data as the patterns of data are very variable and the duration of missing data is very long (not confident in the accuracy of the interpolated data). 
+Each sensor stores the data as separate files for each feature in an SD card that we then uploaded and saved on our computers. These files were saved as text files, so we wrote functions that read in these text files and created a data frame of each feature. In addition, when we collected the data, we recorded each sample a€™s start date and time. Based on this, we developed a method to create a pandas date time object of the collection start date, and then interpolated more dates to match our collection sample frequency for each feature. Lastly, to handle missing values for this milestone, we omitted any samples that failed to record. Thus, our data set only includes data for times that the sensor actually recorded. We decided not to use interpolation for missing data as the patterns of data are very variable and the duration of missing data is very long (not confident in the accuracy of the interpolated data). 
 
 Initial data visualizations for Milestone 3 indicated that Sensor 1 had the most interesting trend in light, where we could see a pattern of when natural light fills the apartment.
 
-**Insert light vs. time of day**
+![light](Sensor_1/avg_light.png)
 
 **Insert light calendar**
 
@@ -90,24 +90,36 @@ Predicting whether light is artifical, natural or off could be useful for the de
 
 ### Sensor 1 Issues
 
-Sensor 1 experienced several collection issues since sensor distribution in mid October. Please see a section at the end of this report with detailed descriptions and plots of the issues below. Unfortunately the most recent empty collection/data issues presented themselves right before Thanksgiving break and were not able to be resolved due to staff holiday. Based on all of these data issues from Sensor 1 following the Milestone 3, we decided to proceed with exploring Sensor 2 data for the remainder of this project. Sensor 2 did not experience any data collection trouble for the duration of the project. 
+Sensor 1 experienced several collection issues since sensor distribution in mid October. Please see the section at the end of this report with detailed descriptions and plots of the issues below. Unfortunately the most recent empty collection/data issues presented themselves right before Thanksgiving break and were not able to be resolved due to staff holiday. Based on all of these data issues from Sensor 1 following the Milestone 3, we decided to proceed with exploring Sensor 2 data for the remainder of this project. Sensor 2 did not experience any data collection trouble for the duration of the project. 
 
 
 ## Further Data Exploration with Sensor 2 
 
+Purely for visualization purposes, we inverted our light so that 0 represents light off and 4095 represents light on (by subtracting every value by 4095). We then scaled light by a factor of 10 to overlay it with motion count. We also scaled pressure by a factor of 10000 to overlay it. We group each variable by hour and then visualized according to week day (Monday through Sunday).  We see the results below.
+
 **Insert plot with all data (avg/count per hour) for each day of the week**
+
+![Motion, Temp, Light Visualization](Sensor_2/data_exploration/motion_light_press_vis.png)
 
 *The hourly fluctuation in light and motion visually line up well, while temp/press/hum are close to constant throughout day and across days.*
 
-We see that there is no light when there is no motion, hinting at some kind of correlation in this case and supporting that motion-sensing lighting may be beneficial (i.e. if Kaela forgets to turn off her lights and her sensor doesn't sense any motion, it will turn the light off and save her electric bill!). Interestingly, we noticed from these plots that Sensor 2 recorded lights on (i.e. resident was awake) past midnight on days that corresponded to problem set due dates. We therefore decided to integrate the number of problem sets due per day as a variable in our dataset. This variable was generated by counting the number of problem sets due for a given day for the team member with Sensor 2 in her apartment. Similarly, in addition to investigating how the number of problem sets may relate to lights being on (or lights being on later for days when they are due), we were also interested in understanding how this may relate to the number of hours of sleep that this individual had. Specifically, we were interested in utilizing the Fitbit sleep tracking data from the team member with Sensor 2 to understand whether we can use environmental data from the sensor in addition to the number of problems sets due to predict whether this individual had a "good sleep," i.e. greater than 7 hours or a "bad sleep," i.e. less than 7 hours.
+Notice that there is no light when there is no motion, hinting at some kind of correlation in this case and supporting that motion-sensing lighting may be beneficial (i.e. if person in sensor 2's apartment forgets to turn off the lights and the sensor doesn't detect any motion, it will turn the light off and save her electric bill!). Interestingly, we noticed from these plots that Sensor 2 recorded lights on (i.e. resident was awake) past midnight on days that corresponded to problem set due dates. We therefore decided to integrate the number of problem sets due per day as a variable in our dataset. This variable was generated by counting the number of problem sets due for a given day for the team member with Sensor 2 in her apartment. Similarly, in addition to investigating how the number of problem sets may relate to lights being on (or lights being on later for days when they are due), we were also interested in understanding how this may relate to the number of hours of sleep that this individual had. Specifically, we were interested in utilizing the Fitbit sleep tracking data from the team member with Sensor 2 to understand whether we can use environmental data from the sensor in addition to the number of problems sets due to predict whether this individual had a "good sleep," i.e. greater than 7 hours or a "bad sleep," i.e. less than 7 hours.
 
+For further analysis, we also calculated the average values for the following predictors based on weekday (0-6 corresponds to Monday - Sunday). 
+
+![Avg hourly plot](./Sensor_2/data_exploration/avg_daily_counts.png)
+
+ Notice here how average light, temperature and humidity remain relatively constant through out the week, whereas more motion occurs towards the end of the week compared to the beginning/middle. This would make sense, as temperature is set a a specified temperature and doesn't fluctuate until it is manually set differently. The motion count is higher during the weekends because the person in sensor 2's apartment is most likely at class or working on psets outside of the apartment during the week, but goes home to do work on the weekends. Lastly, notice that the most psets are typically due on day 2 of the week, or Wednesday. As a result, the person in this apartment on average, gets the most amount of sleep on the night prior to Thursday, after the psets are due. 
 
 ## Predicting Quality of Sleep
 
 We generated a scatter matrix to visualize any existing correlations in our data. We also used this plot to inform the creation of interaction and polynomial terms to augment our dataset.
 
-**Insert scatter matrix**
+![Scatter plot](./Sensor_2/data_exploration/scatter.png) 
 
+Notice that within this scatter matrix, there is a more distinct correlation between temperature and humidity. We keep this in mind later when including interaction terms in our data set for our models.
+
+### Variables
 
 Outcome variable = sleep score, i.e. quality of sleep indicator 
     * number of hours slept during each night was recorded from Fitbit of team member with Sensor 2 in apartment
@@ -119,55 +131,150 @@ Sensor data:
     * average hourly light
     * average hourly temperature
     * average hourly humidity
-    * average hourly pressure    
+    * average hourly pressure  
+      
 Non-sensor data:
-    * month
+    * month    
     * weekday
     * number of problem sets due (psets)
+    
 Interaction terms:
-    * pressure X humidity
-    * pressure X temperature 
-    * temperature X humidity
-    * temperature X humidity X pressure    
-    * motion X light
-    * weekday X month
+    * pressure X humidity    
+    * pressure X temperature     
+    * temperature X humidity    
+    * temperature X humidity X pressure        
+    * motion X light    
+    * weekday X month    
     * weekday X psets
+    
 Polynomial terms:
-    * motion^2
-    * light^2
+    * motion^2    
+    * light^2   
     * psets^2
+    
+### Statistical Comparisons
+
+To understand if there is a significant difference among the predictor variables, we calculated a ttest for each variable, comparing the two groups, less than 6 hours of sleep and 6 or greater hours of sleep. We see the results below. 
+
+| Predictor | p values |
+| --- | --- |
+| Avg Hourly Temp | 8.329172e-08 |
+| Pressure X Temp | 2.292958e-07 |
+| Temp X Humidity | 5.008194e-06 |
+| Temp X Humidity X Pressure | 7.062532e-066 |
+| Avg Hourly Humidity | 3.776330e-05 |
+| Pressure X Humidity | 5.748489e-05 |
+| Number of psets due | 5.555726e-03 |
+| Motion^2 | 1.460468e-02 |
+| Average Hourly Pressure | 2.254556e-02 |
+| Total Motion Count | 4.137298e-02 |
+
+According to the pvalues, we see the predictors listed above all are statistically significant (i.e. there is a statistical significance among these predictors when the person gets less than 6 hours of sleep verses 6 or greater hours of sleep).
 
 ### Linear Regression
 
+We first perform a baseline linear regression model. For this model, we scaled the data. After fitting the model on training data, we found that this model had a training accuracy of 0.2613 and testing accuracy of 0.2450. This accuracy is very low, which we reason is because our outcome variable is binary and classification models are better suited for this.
+
 ### Logistic Regression
 
-### Decision Tree 
+Based on the poor results of the linear regression model, we then perform a baseline logistic regression model to determine if there is signal between our predictor variables and outcome variable.  We scaled the data for this model. This model had a training accuracy of 0.6356 and a testing accuracy of 0.6364. 
 
-#### Best Depth from Cross Validation
+**insert plot here**
 
-Using 5-fold cross validation with a max depth of 20, the best depth of the decision tree was found to be XX.
+While these accuracies are higher, we still would like better predictions. In addition, we wanted to have more interpretability of the results, and so we decided to model the data with decision trees.
 
-**Insert tree image**
+### Simple Decision Trees 
+
+We decided to different variations of simple decision trees on our data set. Because the rest of the models we create are tree based methods, we do not scale or normalize the predictors for the rest of the models. We perform three methods using simple decision trees: an overfit tree with a tree depth of 20 (our chosen max depth), 5 fold cross validation over tree depths up to 20, and bagging. 
 
 #### Overfit Decision Tree
 
+We first created a simple decision tree that is considered to be overfit by creating a tree with depth 20. 
+
 tree depth = 20
+ ![Best CV Tree Visualization](./Sensor_2/data_exploration/overfit_tree.png)
+ 
+This model has a training accuracy of 1.0 and testing accuracy of 0.8896.
+
+#### Best Depth from Cross Validation
+
+Using 5-fold cross validation, we created a total of 20 trees with varying depths up to 20. We then found the train and test accuracies for all of these models, and found the mean, upper bound, and lower bounds of the resulting cross validation scores. The results for each tree depth are shown in the figure below. 
+
+![Best CV acc](./Sensor_2/data_exploration/cv_acc.png)
+
+Notice that training and testing accuracy and cross validation mean all increase as the number of tree depths increases. 
+
+We then sorted according to the cross validation scores and found that the tree depth corresponding to the highest CV mean is 19. We then fit a decision tree with depth 19 and found that average hourly pressure was the top predictor chosen to split on, following with the variables, pressure x humidity and weekday x number of psets. We see this in the tree graph below.
+
+![Best CV Tree Visualization](./Sensor_2/data_exploration/best_cv_tree.png)
+ 
+*analyze more here*
+
+We found that the corresponding train accuracy is 1.0 and test accuracy is 0.9675.
 
 ### Bagging
 
-tree depth = 20
+Because of possible overfitting (?), we perform bagging over 55 decision trees with max depth (20). We found that the top predictors chosen among the trees in this model is given in the table below.
+
+| Top Predictor | Counts |
+| --- | --- |
+| Average Hourly Pressure | 47 |
+| Avg Hourly Temp | 5 |
+| Pressure X Humidity | 2 |
+| weekday X psets | 1 |
+
+We can see the comparison between the CV tree, bagging, and overfit tree in the table below.
+ 
+ ![Best CV Tree Visualization](./Sensor_2/data_exploration/model_acc_comp.png)
+ 
+ *Add analysis here*
 
 ### Random Forest
 
-tree depth = 20
+We then fit a random forest classifier with tree depth 20 (chosen max depth) because _____ . We found that the top predictors chosen for each tree are shown in the table below.
+
+| Top Predictor | Counts |
+| --- | --- |
+| Average Hourly Pressure | 11 |
+| Avg Hourly Temp | 8 |
+| Pressure X Temp | 8 |
+| Temp X Humidity X Pressure | 6 |
+| weekday X psets | 5 |
+| Avg Hourly Humidity | 4 |
+| Week day | 3 |
+| Pressure X Humidity | 3 |
+| Temp X Humidity | 3 |
+| Motion | 1 |
+| Total Motion Count | 1 |
+| Avg Hourly Light | 1 |
+| (Number of psets due)^2  | 1 |
+
+Notice that within the random forest model, average hourly pressure is the top predictor, which is the same top predictor variable as that chosen in our decision tree. **include more results/analysis**
+
+### Results Comparison across Models
+
+As an overall summary, we include the train and accuracy scores in the table below.
+
+| Classifier | Training Accuracy | Testing Accuracy |
+| --- | --- | --- |
+| single tree with best depth chosen by CV | 1.0 | 0.967532 |
+| single depth-X tree | 1.0 | 0.974026 |
+| bagging 55 depth-X trees | 0.998217 | 0.983235 |
+| Random Forest of 55 depth-X trees | 1.0 | 0.993506 |
+
+**Add analysis here**
+
+## Conclusion
+
+### Analysis of models results
+
 
 ### Application of Sleep Quality Classification Model
 
 * your apartment can track your sleep, rather than requiring that individuals don an activity tracker such as a Fitbit. 
 * information could be eventually valuable real estate 
 
-
-## Details on Sensor 1 Issues
+## Details on Sensor 1 Issues for Future Applications and/or Projects
 
 Sensor 1 experienced numerous issues with early collections (i.e. necessity of hard reset or else no data written to SD card) led to several empty collections but these were able to be resolved with help from Evan in the Active Learning Labs. Sensor 1 was able to collect 2 full weeks of consecutive data to prepare for models presented in Milestone 3, corresponding to the first section of this report. 
 
@@ -175,7 +282,7 @@ Following this streak of good fortune, Sensor 1 had a 72 hour empty collection (
 
 **Insert plot**
 
-Similarly, during this and subsequent collections, temperature and humidity had all values recorded as 0, while pressure recorded reasonable values. This is interesting as apartment temparture was indeed above freezing during these collections days and also interesting that these three outcome variables are recorded on the same sensor head. 
+Similarly, during this and subsequent collections, temperature and humidity had all values recorded as 0, while pressure recorded reasonable values. This is interesting as apartment temperature was indeed above freezing during these collections days and also interesting that these three outcome variables are recorded on the same sensor head. 
 
 **Insert plot**
 
