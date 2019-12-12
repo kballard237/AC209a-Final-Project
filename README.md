@@ -48,7 +48,6 @@ Each sensor stores the data as separate files for each feature in an SD card tha
 
 Initial data visualizations for Milestone 3 indicated that Sensor 1 had the most interesting trend in light, where we could see a pattern of when natural light fills the apartment.
 
-**Insert light vs. time of day**
 ![light](Sensor_1/avg_light.png)
 
 **Insert light calendar**
