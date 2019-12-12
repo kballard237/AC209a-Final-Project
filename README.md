@@ -2,18 +2,30 @@
 
 ##### Group 65: Kyra Ballard, Kaela Nelson, Lauren Baker
 
+
+## Introduction
+
 <p align="justify">
-We completed project A: measuring our environment. For this project, we collected data from two sensors placed inside residences. 
+We completed Project A: Measuring Our Environment. For this project, we collected light, motion, temperature, humidity, and pressure data from two sensors placed inside residences. A detailed description of sensor capabilites, our data collection process, and our modeling results are outlined in the sections below. We began this project with the following research goal:
 </p>
 
-## Datasets 
+<p align="justify">
+<strong>Preliminary Research Goal:</strong> To predict behavioral patterns based on environmental data measured from our sensors.
+</p>
+
+<p align="justify">
+Following data collection, we performed preliminary data analysis to better define this research question and focus our modeling predictions on light classification (Milestone 3) and sleep quality (extended work following Milestone 3). 
+</p>
+
+
+## Data Collection 
 
 <p align="justify">
 We collected our data using sensors that capture their surrounding features: light (cadmium sulfide photoresistor AFEC), motion (passive infrared detector with 150 cm over 100 degree range; records binary 0 or 1 pulses with 2sec resolution), temperature (-20 to 60 degrees C), humidity (20 to 95% RH with resolution 0.1%), and pressure (300 - 1100 hPa +/-1 hPa). We placed Sensor 1 in the foyer of one student's apartment, and Sensor 2 in the bedroom of another student's apartment (both students in this group). The differences in these locations are as follows: Sensor 1 is placed in an apartment with multiple residency and building-regulated heat, and Sensor 2 is placed in an apartment with single residency and tenant-regulated heat.
 </p>
 
 <p align="justify">
-For each sample and corresponding sensor, we specified both the sample and duration rates, as recorded below. Our intuition behind this is that light and motion tend to fluctuate more frequently, so we set their sample rate to collect within smaller windows of time. However, temperature, humidity, and pressure fluctuate less frequently over a small time interval, so we set their sample rate to be higher (note that these environmental variables were recorded via one sensing "head" of the sensor and thus required the same sampling frequency). The duration of our data collections lasted between 24-99 hours (99 hour limit). Details on collection rates are included below.
+For each sample and corresponding sensor, we specified both the sample and duration rates, as recorded below. Our intuition behind this is that light and motion tend to fluctuate more frequently, so we set their sample rate to collect within smaller windows of time. However, temperature, humidity, and pressure fluctuate less frequently over a small time interval, so we set their sample rate to be higher (note that these environmental variables were recorded via one sensing "head" of the sensor and thus required the same sampling frequency). The duration of our data collections lasted between 24-99 hours (99 hour limit). Details on collection rates are included below. Sensor 2 successfully collected 39 days of data, while Sensor 1 had more collection issues following Milestone 3 deadline (about 2 weeks worth of data).
 </p>
 
 ### Sensor 1 
@@ -144,6 +156,10 @@ For further analysis, we also calculated the average values for the following pr
  </p>
 
 ## Predicting Quality of Sleep
+
+<p align="justify">
+<strong>Updated Research Goal:</strong> To predict the quality of sleep based on environmental data (light, motion, temperature, pressure and humidity), temporal data (month, weekday), and a measure of activity (number of problem sets due).
+</p>
 
 <p align="justify">
 We generated a scatter matrix to visualize any existing correlations in our data. We also used this plot to inform the creation of interaction and polynomial terms to augment our dataset.
@@ -341,10 +357,11 @@ The outcome that we thought was interesting from our modeling is that average ho
 
 ### Application of Sleep Quality Classification Model
 
-* your apartment can track your sleep, rather than requiring that individuals don an activity tracker such as a Fitbit. 
-* information could be eventually valuable real estate 
+<p align="justify">
+The ability to classify whether an individual slept for greater than the recommended 7 hours of sleep per night may be interesting for individuals who would like to know their sleep data but are not interested in wearing any sort of activity tracker on their body during sleep. By measuring apartment conditions to predict sleep duration, this also eliminates the necessity of having to remember to put on the activity tracker in order to keep track of an individual's sleeping patterns. This data may also have value in terms of dorm organization, in that rooms could keep track of their residents sleep patterns and pair individuals who have matching patterns. Similalry, in an apartment building, an apartment next to neighbors that have been enviornmentally tracked to follow normal, healthy sleep patterns may have the potential to increase property value and may be of interest to the real estate business. 
+</p>
 
-## Details on Sensor 1 Issues for Future Applications and/or Projects
+## Details on Sensor 1 Issues for Future Student Use
 
 <p align="justify">
 Sensor 1 experienced numerous issues with early collections (i.e. necessity of hard reset or else no data written to SD card) led to several empty collections but these were able to be resolved with help from Evan in the Active Learning Labs. Sensor 1 was able to collect 2 full weeks of consecutive data to prepare for models presented in Milestone 3, corresponding to the first section of this report. 
