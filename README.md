@@ -50,14 +50,13 @@ Note: Sensor 2 utilized the maximum duration of recording (99 hours), while Sens
 
 Each sensor stores the data as separate files for each feature in an SD card that we then uploaded and saved on our computers. These files were saved as text files, so we wrote functions that read in these text files and created a data frame of each feature. In addition, when we collected the data, we recorded each sample aÄôs start date and time. Based on this, we developed a method to create a pandas date time object of the collection start date, and then interpolated more dates to match our collection sample frequency for each feature. Lastly, to handle missing values for this milestone, we omitted any samples that failed to record. Thus, our data set only includes data for times that the sensor actually recorded. We decided not to use interpolation for missing data as the patterns of data are very variable and the duration of missing data is very long (not confident in the accuracy of the interpolated data). 
 
-Initial data visualizations for Milestone 3 indicated that Sensor 1 had the most interesting trend in light, where we could see a pattern of when natural light fills the apartment.
-
-
-**Insert light calendar**
-
-After analyzing these two plots, we decided that it would be interesting to look at the average amount of light per hour over the collection sample period. We then overlaid this average light over our plot.
+Initial data visualizations for Milestone 3 indicated that Sensor 1 had the most interesting trend in light, where we could see a pattern of when natural light fills the apartment. 
 
 ![light](Sensor_1/calendar_plot.png)
+
+After analyzing this plot, we decided that it would be interesting to look at the average amount of light per hour over the collection sample period. We then overlaid this average light over a plot of light during all collection days.
+
+![light](Sensor_1/avg_light.png)
 
 As you can see above, we can infer that sunrise occurs around 5 am and sunset occurs around 5pm. It is even more interesting to see that after sunset, we could potentially classify artificial versus natural light, because if light is less than 4095 after sunset, then it would have to be artificial light. This motivated us to adjust our research question to be based on predicting artificial or natural light. Thus, our newly revised project question is: **‚ÄúBased on indoor environmental features, is the light that the sensor catches artificial or natural?‚Äù** In addition, we are interested in features are most indicative of the light is artificial or natural. 
 
@@ -279,11 +278,12 @@ Sensor 1 experienced numerous issues with early collections (i.e. necessity of h
 
 Following this streak of good fortune, Sensor 1 had a 72 hour empty collection (not due to lack of hard reset) followed by erractic sensor display and resultant inconsistencies in the subsequent recorded data. Specifically, there was an issue with the light and motion sensing during the collection immediately after the randomly empty collection. The motion data seemed to contain values from the light data (i.e. there were instances of 4095 and other values seen in the light data rather than only the expected 0's and 1's) which was peculiar see figure below). Lengths of these data were opposite of the expected lengths based on user-input frequency, and while we originally surmised that the user mistakenly input frequencies for light and motion, it seems that there was something going wrong with these sensors based on the data discrepancies. 
 
-**Insert plot**
+![light](Sensor_1/Sensor1_Issues_Motion.png)
+
 
 Similarly, during this and subsequent collections, temperature and humidity had all values recorded as 0, while pressure recorded reasonable values. This is interesting as apartment temperature was indeed above freezing during these collections days and also interesting that these three outcome variables are recorded on the same sensor head. 
 
-**Insert plot**
+![light](Sensor_1/Sensor1_Issues_TempPressHum.png)
 
 
 
