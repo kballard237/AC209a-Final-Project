@@ -11,7 +11,9 @@ We completed project A: measuring our environment. For this project, we collecte
 
 <p align="justify">
 We collected our data using sensors that capture their surrounding features: light (cadmium sulfide photoresistor AFEC), motion (passive infrared detector with 150 cm over 100 degree range; records binary 0 or 1 pulses with 2sec resolution), temperature (-20 to 60 degrees C), humidity (20 to 95% RH with resolution 0.1%), and pressure (300 - 1100 hPa +/-1 hPa). We placed Sensor 1 in the foyer of one student's apartment, and Sensor 2 in the bedroom of another student's apartment (both students in this group). The differences in these locations are as follows: Sensor 1 is placed in an apartment with multiple residency and building-regulated heat, and Sensor 2 is placed in an apartment with single residency and tenant-regulated heat.
+</p>
 
+<p align="justify">
 For each sample and corresponding sensor, we specified both the sample and duration rates, as recorded below. Our intuition behind this is that light and motion tend to fluctuate more frequently, so we set their sample rate to collect within smaller windows of time. However, temperature, humidity, and pressure fluctuate less frequently over a small time interval, so we set their sample rate to be higher (note that these environmental variables were recorded via one sensing "head" of the sensor and thus required the same sampling frequency). The duration of our data collections lasted between 24-99 hours (99 hour limit). Details on collection rates are included below.
 </p>
 
@@ -44,18 +46,25 @@ Location: Apartment 2 bedroom
     * Sample rate: 30 min
     * Duration Rate: 99 hours
 
+<p align="justify">
 Note: Sensor 2 utilized the maximum duration of recording (99 hours), while Sensor 1 used variable durations due to more frequent collection troubles (needed to perform shorter collections to confirm data was indeed recording). Because there were complications on some of the sample collections, our data has some missing values from some dates in between some collection times. We dealt with this by omitting these sample collections from our data set. We included a separate section with detailed Sensor 1 issues at the end of this report.
+</p>
 
 ## Preliminary Data Analysis (Milestone 3) 
 
+<p align="justify">
 Each sensor stores the data as separate files for each feature in an SD card that we then uploaded and saved on our computers. These files were saved as text files, so we wrote functions that read in these text files and created a data frame of each feature. In addition, when we collected the data, we recorded each sample's start date and time. Based on this, we developed a method to create a pandas date time object of the collection start date, and then interpolated more dates to match our collection sample frequency for each feature. Lastly, to handle missing values for this milestone, we omitted any samples that failed to record. Thus, our data set only includes data for times that the sensor actually recorded. We decided not to use interpolation for missing data as the patterns of data are very variable and the duration of missing data is very long (not confident in the accuracy of the interpolated data). 
+</p>
 
+<p align="justify">
 Initial data visualizations for Milestone 3 indicated that Sensor 1 had the most interesting trend in light, where we could see a pattern of when natural light fills the apartment.
-
+</p>
 
 **Insert light calendar**
 
+<p align="justify">
 After analyzing these two plots, we decided that it would be interesting to look at the average amount of light per hour over the collection sample period. We then overlaid this average light over our plot.
+</p>
 
 ![light](Sensor_1/calendar_plot.png)
 
