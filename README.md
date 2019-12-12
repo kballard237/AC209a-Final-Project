@@ -68,11 +68,15 @@ After analyzing this plot, we decided that it would be interesting to look at th
 
 ![light](Sensor_1/avg_light.png)
 
+<p align="justify">
 As you can see above, we can infer that sunrise occurs around 5 am and sunset occurs around 5pm. It is even more interesting to see that after sunset, we could potentially classify artificial versus natural light, because if light is less than 4095 after sunset, then it would have to be artificial light. This motivated us to adjust our research question to be based on predicting artificial or natural light. Thus, our newly revised project question is: **"Based on indoor environmental features, is the light that the sensor catches artificial or natural?"** In addition, we are interested in features are most indicative of the light is artificial or natural. 
+</p>
 
 ### Decision Tree 
 
+<p align="justify">
 We decided to fit a simple decision tree model to our training data because our outcome variable has 3 categories: light off, natural light, and artificial light, and and it would not make sense to perform a linear or logistic regression. For this model, we created a baseline data set with the following features:
+</p>
 
 * Light
 * Day: day of the month
@@ -85,20 +89,28 @@ We decided to fit a simple decision tree model to our training data because our 
     * 1 if light is on and it is natural
     * 2 if light is off
 
+<p align="justify">
 From these variables, we have that light, day, hour, and light_on are our predictor variables and light_source is our outcome variable that we wish to predict. To determine the best tree depth, we chose a range of tree depths from 1 to 5 and evaluated the performance and standard deviations for each depth using 5-fold cross-validation. We plotted the estimated cross val mean +/- 2 standard deviations for each depth, along with the train and test scores. 
+</p>
 
 ![Avg hourly plot](./Sensor_1/sensor1_tree.png)
 
+<p align="justify">
 After analyzing the results from the above plot, we found that a tree depth of 2 returned the highest accuracy score (without overfitting to 100%). We then fit a simple decision tree with a tree depth of 2, based on this plot and get the following results:
+</p>
 
 * Decision Tree of Depth 2, Accuracy of Training Set: 94.95%
 * Decision Tree of Depth 2, Accuracy of Testing Set: 94.47%
 
+<p align="justify">
 These high accuracy scores would be expected in this case because we have a limited number of predictors and the data already seems to have some kind of trend/pattern to it (i.e. change in light over time of day).
+</p>
 
 ### Application of Light Classification Model
 
+<p align="justify">
 Predicting whether light is artificial, natural or off could be useful for the development of a lamp/house lighting that emits a natural pattern of light throughout the day to mirror natural light in a given space and match a user's light needs in that space. Additionally, quantifying and classifying light may be of interest in the real estate business, as having rooms with certain durations and intensities of light may be of interest to potential buyers.
+</p>
 
 ### Sensor 1 Issues
 
