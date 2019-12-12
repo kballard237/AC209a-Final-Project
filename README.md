@@ -361,7 +361,7 @@ The outcome that we thought was interesting from our modeling is that average ho
 The ability to classify whether an individual slept for greater than the recommended 7 hours of sleep per night may be interesting for individuals who would like to know their sleep data but are not interested in wearing any sort of activity tracker on their body during sleep. By measuring apartment conditions to predict sleep duration, this also eliminates the necessity of having to remember to put on the activity tracker in order to keep track of an individual's sleeping patterns. This data may also have value in terms of dorm organization, in that rooms could keep track of their residents sleep patterns and pair individuals who have matching patterns. Similalry, in an apartment building, an apartment next to neighbors that have been enviornmentally tracked to follow normal, healthy sleep patterns may have the potential to increase property value and may be of interest to the real estate business. 
 </p>
 
-## Details on Sensor 1 Issues for Future Applications and/or Projects
+## Details on Sensor 1 Issues for Future Student Use
 
 <p align="justify">
 Sensor 1 experienced numerous issues with early collections (i.e. necessity of hard reset or else no data written to SD card) led to several empty collections but these were able to be resolved with help from Evan in the Active Learning Labs. Sensor 1 was able to collect 2 full weeks of consecutive data to prepare for models presented in Milestone 3, corresponding to the first section of this report. 
