@@ -364,20 +364,23 @@ The ability to classify whether an individual slept for greater than the recomme
 ## Details on Sensor 1 Issues for Future Student Use
 
 <p align="justify">
-Sensor 1 experienced numerous issues with early collections (i.e. necessity of hard reset or else no data written to SD card) led to several empty collections but these were able to be resolved with help from Evan in the Active Learning Labs. Sensor 1 was able to collect 2 full weeks of consecutive data to prepare for models presented in Milestone 3, corresponding to the first section of this report. 
+Given Sensor 1 troubles, we wanted to provide some visualizations of these issues in consideration of future projects and troibleshooting processes. 
+    
+Sensor 1 experienced numerous issues with early collections (i.e. necessity of hard reset or else no data written to SD card) that led to several empty collections. These were eventually able to resolved at the end of October with help from Evan in the Active Learning Labs. Sensor 1 was able to collect 2 full weeks of consecutive data to prepare for models presented in Milestone 3, corresponding to the first section of this report. 
 </p>
 
 <p align="justify">
-Following this streak of good fortune, Sensor 1 had a 72 hour empty collection (not due to lack of hard reset) followed by erractic sensor display and resultant inconsistencies in the subsequent recorded data. Specifically, there was an issue with the light and motion sensing during the collection immediately after the randomly empty collection. The motion data seemed to contain values from the light data (i.e. there were instances of 4095 and other values seen in the light data rather than only the expected 0's and 1's) which was peculiar see figure below). Lengths of these data were opposite of the expected lengths based on user-input frequency, and while we originally surmised that the user mistakenly input frequencies for light and motion, it seems that there was something going wrong with these sensors based on the data discrepancies. 
+Following this streak of good fortune, Sensor 1 had a 72 hour empty collection (not due to lack of hard reset) on November 23rd, followed by erractic sensor display and resultant inconsistencies in the subsequent recorded data. Specifically, there was an issue with the light and motion sensing during the collection immediately after the randomly empty collection. The motion data seemed to contain values from the light data (i.e. there were instances of 4095 and other values seen in the light data rather than only the expected 0's and 1's) which was peculiar see figure below). Lengths of these data were opposite of the expected lengths based on user-input frequency, and while we originally surmised that the user mistakenly input frequencies for light and motion, it seems that there was something going wrong with these sensors based on the data discrepancies. Please see data in red below, indicating the peculiar data values for motion.
 </p>
 
 ![light](Sensor_1/Sensor1_Issues_Motion.png)
 
 <p align="justify">
-Similarly, during this and subsequent collections, temperature and humidity had all values recorded as 0, while pressure recorded reasonable values. This is interesting as apartment temperature was indeed above freezing during these collections days and also interesting that these three outcome variables are recorded on the same sensor head. 
+Similarly, from November 26th onward, temperature (blue) and humidity (green) had all values recorded as 0, while pressure (orange) recorded reasonable values. This is interesting as apartment temperature was indeed above freezing during these collections days and also interesting that these three outcome variables are recorded on the same sensor head. 
 </p>
 
 ![light](Sensor_1/Sensor1_Issues_TempPressHum.png)
+
 
 
 
