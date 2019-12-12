@@ -50,7 +50,7 @@ Location: Apartment 2 bedroom
 Note: Sensor 2 utilized the maximum duration of recording (99 hours), while Sensor 1 used variable durations due to more frequent collection troubles (needed to perform shorter collections to confirm data was indeed recording). Because there were complications on some of the sample collections, our data has some missing values from some dates in between some collection times. We dealt with this by omitting these sample collections from our data set. We included a separate section with detailed Sensor 1 issues at the end of this report.
 </p>
 
-## Preliminary Data Analysis (Milestone 3) 
+## Preliminary Data Analysis (Sensor 1, Milestone 3)
 
 <p align="justify">
 Each sensor stores the data as separate files for each feature in an SD card that we then uploaded and saved on our computers. These files were saved as text files, so we wrote functions that read in these text files and created a data frame of each feature. In addition, when we collected the data, we recorded each sample's start date and time. Based on this, we developed a method to create a pandas date time object of the collection start date, and then interpolated more dates to match our collection sample frequency for each feature. Lastly, to handle missing values for this milestone, we omitted any samples that failed to record. Thus, our data set only includes data for times that the sensor actually recorded. We decided not to use interpolation for missing data as the patterns of data are very variable and the duration of missing data is very long (not confident in the accuracy of the interpolated data). 
@@ -118,7 +118,7 @@ Predicting whether light is artificial, natural or off could be useful for the d
 Sensor 1 experienced several collection issues since sensor distribution in mid October. Please see the section at the end of this report with detailed descriptions and plots of the issues below. Unfortunately the most recent empty collection/data issues presented themselves right before Thanksgiving break and were not able to be resolved due to staff holiday. Based on all of these data issues from Sensor 1 following the Milestone 3, we decided to proceed with exploring Sensor 2 data for the remainder of this project. Sensor 2 did not experience any data collection trouble for the duration of the project. 
 </p>
 
-## Further Data Exploration with Sensor 2 
+## Sensor 2 Data Exploration and Modeling
 
 <p align="justify">
 Purely for visualization purposes, we inverted our light so that 0 represents light off and 4095 represents light on (by subtracting every value by 4095). We then scaled light by a factor of 10 to overlay it with motion count. We also scaled pressure by a factor of 10000 to overlay it. We group each variable by hour and then visualized according to week day (Monday through Sunday).  We see the results below.
