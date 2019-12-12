@@ -52,13 +52,12 @@ Each sensor stores the data as separate files for each feature in an SD card tha
 
 Initial data visualizations for Milestone 3 indicated that Sensor 1 had the most interesting trend in light, where we could see a pattern of when natural light fills the apartment.
 
-![light](Sensor_1/avg_light.png)
 
 **Insert light calendar**
 
 After analyzing these two plots, we decided that it would be interesting to look at the average amount of light per hour over the collection sample period. We then overlaid this average light over our plot.
 
-**Insert average light**
+![light](Sensor_1/calendar_plot.png)
 
 As you can see above, we can infer that sunrise occurs around 5 am and sunset occurs around 5pm. It is even more interesting to see that after sunset, we could potentially classify artificial versus natural light, because if light is less than 4095 after sunset, then it would have to be artificial light. This motivated us to adjust our research question to be based on predicting artificial or natural light. Thus, our newly revised project question is: **“Based on indoor environmental features, is the light that the sensor catches artificial or natural?”** In addition, we are interested in features are most indicative of the light is artificial or natural. 
 
@@ -79,7 +78,7 @@ We decided to fit a simple decision tree model to our training data because our 
 
 From these variables, we have that light, day, hour, and light_on are our predictor variables and light_source is our outcome variable that we wish to predict. To determine the best tree depth, we chose a range of tree depths from 1 to 5 and evaluated the performance and standard deviations for each depth using 5-fold cross-validation. We plotted the estimated cross val mean +/- 2 standard deviations for each depth, along with the train and test scores. 
 
-**Insert accuracy variation graph FOR TRAIN AND TEST**
+![Avg hourly plot](./Sensor_1/sensor1_tree.png)
 
 After analyzing the results from the above plot, we found that a tree depth of 2 returned the highest accuracy score (without overfitting to 100%). We then fit a simple decision tree with a tree depth of 2, based on this plot and get the following results:
 
