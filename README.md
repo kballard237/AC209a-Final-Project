@@ -7,9 +7,13 @@
 
 <p align="justify">
 We completed Project A: Measuring Our Environment. For this project, we collected light, motion, temperature, humidity, and pressure data from two sensors placed inside residences. A detailed description of sensor capabilites, our data collection process, and our modeling results are outlined in the sections below. We began this project with the following research goal:
+</p>
 
-**Preliminary Research Goal:** To predict behavioral patterns based on environmental data measured from our sensors.
+<p align="justify">
+<b>Preliminary Research Goal:</b> To predict behavioral patterns based on environmental data measured from our sensors.
+</p>
 
+<p align="justify">
 Following data collection, we performed preliminary data analysis to better define this research question and focus our modeling predictions on light classification (Milestone 3) and sleep quality (extended work following Milestone 3). 
 </p>
 
