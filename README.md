@@ -10,7 +10,7 @@ We completed Project A: Measuring Our Environment. For this project, we collecte
 </p>
 
 <p align="justify">
-<b>Preliminary Research Goal:</b> To predict behavioral patterns based on environmental data measured from our sensors.
+<strong>Preliminary Research Goal:</strong> To predict behavioral patterns based on environmental data measured from our sensors.
 </p>
 
 <p align="justify">
@@ -157,7 +157,9 @@ For further analysis, we also calculated the average values for the following pr
 
 ## Predicting Quality of Sleep
 
-**Updated Research Goal:** To predict the quality of sleep based on environmental data (light, motion, temperature, pressure and humidity), temporal data (month, weekday), and a measure of activity (number of problem sets due).
+<p align="justify">
+<strong>Updated Research Goal:</strong> To predict the quality of sleep based on environmental data (light, motion, temperature, pressure and humidity), temporal data (month, weekday), and a measure of activity (number of problem sets due).
+</p>
 
 <p align="justify">
 We generated a scatter matrix to visualize any existing correlations in our data. We also used this plot to inform the creation of interaction and polynomial terms to augment our dataset.
