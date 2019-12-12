@@ -1,11 +1,10 @@
-# AC209a Final Project 
+# Measuring Our Environment
 
-##### Kyra Ballard, Kaela Nelson, Lauren Baker
+##### Group 65: Kyra Ballard, Kaela Nelson, Lauren Baker
 
 <p align="justify">
 We completed project A: measuring our environment. For this project, we collected data from two sensors placed inside residences. 
 </p>
-
 
 ## Datasets 
 
